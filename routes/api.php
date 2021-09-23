@@ -20,10 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('products/{id?}',[ProductController::class,'getData']);
-Route::post('products',[ProductController::class,'store']);
-Route::put('products/{id}',[ProductController::class,'update']);
-Route::delete('products/{id}',[ProductController::class,'delete']);
+Route::group(['middleware'=>'auth.jwt'],function(){
+    Route::get('products/{id?}',[ProductController::class,'getData']);
+    Route::post('products',[ProductController::class,'store']);
+    Route::put('products/{id}',[ProductController::class,'update']);
+    Route::delete('products/{id}',[ProductController::class,'delete']);
+});
+
 
 Route::post('users/login', [JwtUserController::class,'login']);
 Route::post('users/register', [JwtUserController::class,'register']);

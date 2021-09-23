@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     public function getData(Request $request,$product_id = null){
-        $user = auth('api')->user();
+        // $user = auth('api')->user();
 
-        if (!$user) {
-            # code...
-            return response()->json([
-                'status' => 0,
-                'message' => 'Unathorized'
-            ]);
-        }
+        // if (!$user) {
+        //     # code...
+        //     return response()->json([
+        //         'status' => 0,
+        //         'message' => 'Unathorized'
+        //     ]);
+        // }
 
         if ($product_id != null) {
             # code...
@@ -73,15 +73,15 @@ class ProductController extends Controller
 
 
     public function store(Request $request){
-        $user = auth('api')->user();
+        // $user = auth('api')->user();
 
-        if (!$user) {
-            # code...
-            return response()->json([
-                'status' => 0,
-                'message' => 'Unathorized'
-            ]);
-        }
+        // if (!$user) {
+        //     # code...
+        //     return response()->json([
+        //         'status' => 0,
+        //         'message' => 'Unathorized'
+        //     ]);
+        // }
         $validator = Validator::make($request->all(), [
             'product_name' => 'required|max:100',
             'product_price' => 'required|max:100',
@@ -136,15 +136,15 @@ class ProductController extends Controller
 
 
     public function update(Request $request,$id){
-        $user = auth('api')->user();
+        // $user = auth('api')->user();
 
-        if (!$user) {
-            # code...
-            return response()->json([
-                'status' => 0,
-                'message' => 'Unathorized'
-            ]);
-        }
+        // if (!$user) {
+        //     # code...
+        //     return response()->json([
+        //         'status' => 0,
+        //         'message' => 'Unathorized'
+        //     ]);
+        // }
         $validator = Validator::make($request->all(), [
             'product_name' => 'required|max:100',
             'product_price' => 'required|max:100',
@@ -207,15 +207,15 @@ class ProductController extends Controller
     }
 
     public function delete(Request $request,$id){
-        $user = auth('api')->user();
+        // $user = auth('api')->user();
 
-        if (!$user) {
-            # code...
-            return response()->json([
-                'status' => 0,
-                'message' => 'Unathorized'
-            ]);
-        }
+        // if (!$user) {
+        //     # code...
+        //     return response()->json([
+        //         'status' => 0,
+        //         'message' => 'Unathorized'
+        //     ]);
+        // }
         $result = Product::where('id',$id)->first();
         if ($result) {
             # code...
