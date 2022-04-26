@@ -9,15 +9,8 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     public function getData(Request $request,$product_id = null){
-        // $user = auth('api')->user();
-
-        // if (!$user) {
-        //     # code...
-        //     return response()->json([
-        //         'status' => 0,
-        //         'message' => 'Unathorized'
-        //     ]);
-        // }
+        // untuk get user data dari token
+        $user = auth('api')->user();
 
         if ($product_id != null) {
             # code...
@@ -50,8 +43,7 @@ class ProductController extends Controller
             }
         }else{
             $products = Product::get();
-            // $products = Product::find($product_id);
-            // dd($products);
+
                 # code...
             foreach ($products as $key => $value) {
                 # code...
